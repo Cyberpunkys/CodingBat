@@ -3,7 +3,7 @@ package ru.vstu.codingbat;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MapHard {
+public class MapMedium {
 
     /**
      *  Given an array of non-empty strings, return a Map<String, String> with a key for every different first
@@ -51,5 +51,41 @@ public class MapHard {
             map.put(first, last);
         }
         return map;
+    }
+
+    /**
+     *  We'll say that 2 strings "match" if they are non-empty and their first chars are the same. Loop over and then
+     *  return the given array of non-empty strings as follows: if a string matches an earlier string in the array,
+     *  swap the 2 strings in the array. A particular first char can only cause 1 swap, so once a char has caused a
+     *  swap, its later swaps are disabled. Using a map, this can be solved making just one pass over the array. More
+     *  difficult than it looks.
+     */
+    public String[] firstSwap(String[] strings) {
+        Map<Character, Integer> swapIndexMap = new HashMap<>(); //value - index of string to swap. -1 - no swap indicator
+        for (int i = 0; i < strings.length; i++) {
+            char firstChar = strings[i].charAt(0);
+            if (swapIndexMap.containsKey(firstChar)) {
+                int indexSwap = swapIndexMap.get(firstChar);
+                if (indexSwap != -1) {
+                    String tmp = strings[i];
+                    strings[i] = strings[indexSwap];
+                    strings[indexSwap] = tmp;
+                    swapIndexMap.put(firstChar, -1);
+                }
+            } else {
+                swapIndexMap.put(firstChar, i);
+            }
+        }
+
+        return strings;
+    }
+
+    /**
+     *  Given an array of strings, return a Map<String, Integer> containing a key for every different string in the
+     *  array, always with the value 0. For example the string "hello" makes the pair "hello":0. We'll do more
+     *  complicated counting later, but for this problem the value is simply 0.
+     */
+    public Map<String, Integer> word0(String[] strings) {
+        return null;
     }
 }
