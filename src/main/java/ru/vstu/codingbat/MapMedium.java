@@ -1,7 +1,9 @@
 package ru.vstu.codingbat;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class MapMedium {
 
@@ -103,5 +105,27 @@ public class MapMedium {
             map.put(str, map.containsKey(str));
         }
         return map;
+    }
+
+    /**
+     *  Given an array of strings, return a Map<String, Integer> containing a key for every different string in the
+     *  array, and the value is that string's length.
+     */
+    public Map<String, Integer> wordLen(String[] strings) {
+        Map<String, Integer> map = new HashMap<>();
+        for (String str : strings) {
+            map.put(str, str.length());
+        }
+        return map;
+    }
+
+    /**
+     *  We'll say that 2 strings "match" if they are non-empty and their first chars are the same. Loop over and then
+     *  return the given array of non-empty strings as follows: if a string matches an earlier string in the array,
+     *  swap the 2 strings in the array. When a position in the array has been swapped, it no longer matches anything.
+     *  Using a map, this can be solved making just one pass over the array. More difficult than it looks.
+     */
+    public String[] allSwap(String[] strings) {
+        throw new UnsupportedOperationException("not implemented yet");
     }
 }

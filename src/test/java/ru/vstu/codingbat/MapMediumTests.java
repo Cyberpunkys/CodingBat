@@ -25,10 +25,6 @@ public class MapMediumTests {
         String[] expected2 = {"ay", "by", "cy", "cx", "bx", "ax", "aaa", "azz"};
         assertArrayEquals(expected2, mapMedium.firstSwap(test2));
 
-        String[] test3 = {"i", "like", "our", "java", "thread!", "btw,", "orm", "is", "shit", "use", "jdbc"};
-        String[]  exp3 = {"is", "like", "orm", "jdbc", "thread!", "btw,", "our", "i", "shit", "use", "java"};
-        assertArrayEquals(exp3, mapMedium.firstSwap(test3));
-
         String[] test4 = {"easy", "does", "it", "every", "ice", "eaten"};
         String[]  exp4 = {"every", "does", "ice", "easy", "it", "eaten"};
         assertArrayEquals(exp4, mapMedium.firstSwap(test4));
