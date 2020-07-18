@@ -52,4 +52,20 @@ public class MapMediumTests {
         );
         assertEquals(expected3, mapMedium.word0(input3));
     }
+
+    @Test
+    public void wordMultipleTest() {
+        Map<String, Boolean> expected1 = Map.ofEntries(
+                Map.entry("a", true), Map.entry("b", true), Map.entry("c", false)
+        );
+        assertEquals(expected1, mapMedium.wordMultiple(new String[] {"a", "b", "a", "c", "b"}));
+
+        Map<String, Boolean> expected2 = Map.ofEntries(
+                Map.entry("a", false), Map.entry("b", false), Map.entry("c", false)
+        );
+        assertEquals(expected2, mapMedium.wordMultiple(new String[] {"c", "b", "a"}));
+
+        Map<String, Boolean> expected3 = Map.ofEntries(Map.entry("c", true));
+        assertEquals(expected3, mapMedium.wordMultiple(new String[] {"c", "c", "c", "c"}));
+    }
 }

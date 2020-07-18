@@ -86,6 +86,22 @@ public class MapMedium {
      *  complicated counting later, but for this problem the value is simply 0.
      */
     public Map<String, Integer> word0(String[] strings) {
-        return null;
+        Map<String, Integer> map = new HashMap<>();
+        for (String str : strings) {
+            map.put(str, 0);
+        }
+        return map;
+    }
+
+    /**
+     *  Given an array of strings, return a Map<String, Boolean> where each different string is a key and its value is
+     *  true if that string appears 2 or more times in the array.
+     */
+    public Map<String, Boolean> wordMultiple(String[] strings) {
+        Map<String, Boolean> map = new HashMap<>();
+        for (String str : strings) {
+            map.put(str, map.containsKey(str));
+        }
+        return map;
     }
 }
