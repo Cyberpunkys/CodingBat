@@ -63,22 +63,22 @@ public class MapMedium {
      *  difficult than it looks.
      */
     public String[] firstSwap(String[] strings) {
-        Map<Character, Integer> swapIndexMap = new HashMap<>(); //value - index of string to swap. -1 - no swap indicator
+        final int ALREADY_SWAPPED = -1;
+        Map<Character, Integer> swapIndexMap = new HashMap<>();
         for (int i = 0; i < strings.length; i++) {
             char firstChar = strings[i].charAt(0);
             if (swapIndexMap.containsKey(firstChar)) {
                 int indexSwap = swapIndexMap.get(firstChar);
-                if (indexSwap != -1) {
+                if (indexSwap != ALREADY_SWAPPED) {
                     String tmp = strings[i];
                     strings[i] = strings[indexSwap];
                     strings[indexSwap] = tmp;
-                    swapIndexMap.put(firstChar, -1);
+                    swapIndexMap.put(firstChar, ALREADY_SWAPPED);
                 }
             } else {
                 swapIndexMap.put(firstChar, i);
             }
         }
-
         return strings;
     }
 
@@ -140,5 +140,22 @@ public class MapMedium {
             }
         }
         return strings;
+    }
+
+    /**
+     *  Loop over the given array of strings to build a result string like this: when a string appears the 2nd, 4th,
+     *  6th, etc. time in the array, append the string to the result. Return the empty string if no string appears a
+     *  2nd time.
+     */
+    public String wordAppend(String[] strings) {
+        StringBuilder result = new StringBuilder();
+        Map<String, Integer> appearsMap = new HashMap<>();
+        for (String str : strings) {
+            appearsMap.put(str, appearsMap.getOrDefault(str, 0) + 1);
+            if (appearsMap.get(str) % 2 == 0) {
+                result.append(str);
+            }
+        }
+        return result.toString();
     }
 }

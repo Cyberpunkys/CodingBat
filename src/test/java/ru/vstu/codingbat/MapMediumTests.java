@@ -17,7 +17,7 @@ public class MapMediumTests {
     MapMedium mapMedium = new MapMedium();
 
     @Test
-    public void firstSwapTest() {
+    void firstSwapTest() {
         String[] test1 = {"ab", "ac"};
         assertArrayEquals(new String[]{"ac", "ab"}, mapMedium.firstSwap(test1));
 
@@ -31,7 +31,7 @@ public class MapMediumTests {
     }
 
     @Test
-    public void word0Test() {
+    void word0Test() {
         String[] input1 = {"a", "b", "a", "b"};
         Map<String, Integer> expected1 = Map.ofEntries(Map.entry("a", 0), Map.entry("b", 0));
         assertEquals(expected1, mapMedium.word0(input1));
@@ -50,7 +50,7 @@ public class MapMediumTests {
     }
 
     @Test
-    public void wordMultipleTest() {
+    void wordMultipleTest() {
         Map<String, Boolean> expected1 = Map.ofEntries(
                 Map.entry("a", true), Map.entry("b", true), Map.entry("c", false)
         );
