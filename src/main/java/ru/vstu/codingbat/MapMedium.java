@@ -126,6 +126,19 @@ public class MapMedium {
      *  Using a map, this can be solved making just one pass over the array. More difficult than it looks.
      */
     public String[] allSwap(String[] strings) {
-        throw new UnsupportedOperationException("not implemented yet");
+        Map<Character, Integer> swapMap = new HashMap<>();
+        for (int i = 0; i < strings.length; i++) {
+            char firstChar = strings[i].charAt(0);
+            if (swapMap.containsKey(firstChar)) {
+                int indexSwap = swapMap.get(firstChar);
+                String tmp = strings[i];
+                strings[i] = strings[indexSwap];
+                strings[indexSwap] = tmp;
+                swapMap.remove(firstChar);
+            } else {
+                swapMap.put(firstChar, i);
+            }
+        }
+        return strings;
     }
 }

@@ -21,7 +21,7 @@ public class MapMediumTests {
         String[] test1 = {"ab", "ac"};
         assertArrayEquals(new String[]{"ac", "ab"}, mapMedium.firstSwap(test1));
 
-        String[] test2 = {"ax", "bx", "cx", "cy", "by", "ay", "aaa", "azz"};
+        String[]     test2 = {"ax", "bx", "cx", "cy", "by", "ay", "aaa", "azz"};
         String[] expected2 = {"ay", "by", "cy", "cx", "bx", "ax", "aaa", "azz"};
         assertArrayEquals(expected2, mapMedium.firstSwap(test2));
 
@@ -63,5 +63,18 @@ public class MapMediumTests {
 
         Map<String, Boolean> expected3 = Map.ofEntries(Map.entry("c", true));
         assertEquals(expected3, mapMedium.wordMultiple(new String[] {"c", "c", "c", "c"}));
+    }
+
+    @Test
+    void allSwap() {
+        assertArrayEquals(new String[] {"ac", "ab"}, mapMedium.allSwap(new String[] {"ab", "ac"}));
+
+        String[]     test2 = {"ax", "bx", "cx", "cy", "by", "ay", "aaa", "azz"};
+        String[] expected2 = {"ay", "by", "cy", "cx", "bx", "ax", "azz", "aaa"};
+        assertArrayEquals(expected2, mapMedium.allSwap(test2));
+
+        String[]   test3 = {"ax", "bx", "ay", "by", "ai", "aj", "bx", "by"};
+        String[] expect3 = {"ay", "by", "ax", "bx", "aj", "ai", "by", "bx"};
+        assertArrayEquals(expect3, mapMedium.allSwap(test3));
     }
 }
