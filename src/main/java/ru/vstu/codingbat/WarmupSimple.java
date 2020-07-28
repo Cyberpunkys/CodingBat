@@ -1,5 +1,7 @@
 package ru.vstu.codingbat;
 
+import java.util.stream.IntStream;
+
 public class WarmupSimple {
 
     /**
@@ -39,4 +41,43 @@ public class WarmupSimple {
     public boolean parrotTrouble(boolean talking, int hour) {
         return talking && (hour < 7 || hour > 20);
     }
+
+    /**
+     *  We'll say that a number is "teen" if it is in the range 13..19 inclusive. Given 2 int values, return true if
+     *  one or the other is teen, but not both.
+     */
+    public boolean loneTeen(int a, int b) {
+        return (a >= 13 && a <= 19) ^ (b >= 13 && b <= 19);
+    }
+
+    /**
+     *  Given 2 positive int values, return the larger value that is in the range 10..20 inclusive, or return 0 if
+     *  neither is in that range.
+     */
+    public int max1020(int a, int b) {
+        return IntStream
+                .of(a, b)
+                .filter(val -> val >= 10 && val <= 20)
+                .max()
+                .orElse(0);
+    }
+
+    /**
+     *  Given a string, take the last char and return a new string with the last char added at the front and back, so
+     *  "cat" yields "tcatt". The original string will be length 1 or more.
+     */
+    public String backAround(String str) {
+        StringBuilder sb = new StringBuilder(str);
+        char last = sb.charAt(sb.length() - 1);
+        return sb.append(last).insert(0, last).toString();
+    }
+
+    /**
+     *  Given an int n, return true if it is within 10 of 100 or 200. Note: Math.abs(num) computes the absolute value
+     *  of a number.
+     */
+    public boolean nearHundred(int n) {
+        throw new UnsupportedOperationException();
+    }
 }
+
