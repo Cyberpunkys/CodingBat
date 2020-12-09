@@ -1,5 +1,6 @@
 package ru.vstu.codingbat;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
@@ -12,21 +13,26 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * Test class for {@link MapMedium}
  */
 
-public class MapMediumTests {
+public class MapMediumTest {
 
-    MapMedium mapMedium = new MapMedium();
+    private static MapMedium mapMedium;
+
+    @BeforeAll
+    static void init() {
+        mapMedium = new MapMedium();
+    }
 
     @Test
     void firstSwapTest() {
         String[] test1 = {"ab", "ac"};
         assertArrayEquals(new String[]{"ac", "ab"}, mapMedium.firstSwap(test1));
 
-        String[]     test2 = {"ax", "bx", "cx", "cy", "by", "ay", "aaa", "azz"};
+        String[] test2 = {"ax", "bx", "cx", "cy", "by", "ay", "aaa", "azz"};
         String[] expected2 = {"ay", "by", "cy", "cx", "bx", "ax", "aaa", "azz"};
         assertArrayEquals(expected2, mapMedium.firstSwap(test2));
 
         String[] test4 = {"easy", "does", "it", "every", "ice", "eaten"};
-        String[]  exp4 = {"every", "does", "ice", "easy", "it", "eaten"};
+        String[] exp4 = {"every", "does", "ice", "easy", "it", "eaten"};
         assertArrayEquals(exp4, mapMedium.firstSwap(test4));
     }
 
@@ -54,26 +60,26 @@ public class MapMediumTests {
         Map<String, Boolean> expected1 = Map.ofEntries(
                 Map.entry("a", true), Map.entry("b", true), Map.entry("c", false)
         );
-        assertEquals(expected1, mapMedium.wordMultiple(new String[] {"a", "b", "a", "c", "b"}));
+        assertEquals(expected1, mapMedium.wordMultiple(new String[]{"a", "b", "a", "c", "b"}));
 
         Map<String, Boolean> expected2 = Map.ofEntries(
                 Map.entry("a", false), Map.entry("b", false), Map.entry("c", false)
         );
-        assertEquals(expected2, mapMedium.wordMultiple(new String[] {"c", "b", "a"}));
+        assertEquals(expected2, mapMedium.wordMultiple(new String[]{"c", "b", "a"}));
 
         Map<String, Boolean> expected3 = Map.ofEntries(Map.entry("c", true));
-        assertEquals(expected3, mapMedium.wordMultiple(new String[] {"c", "c", "c", "c"}));
+        assertEquals(expected3, mapMedium.wordMultiple(new String[]{"c", "c", "c", "c"}));
     }
 
     @Test
     void allSwap() {
-        assertArrayEquals(new String[] {"ac", "ab"}, mapMedium.allSwap(new String[] {"ab", "ac"}));
+        assertArrayEquals(new String[]{"ac", "ab"}, mapMedium.allSwap(new String[]{"ab", "ac"}));
 
-        String[]     test2 = {"ax", "bx", "cx", "cy", "by", "ay", "aaa", "azz"};
+        String[] test2 = {"ax", "bx", "cx", "cy", "by", "ay", "aaa", "azz"};
         String[] expected2 = {"ay", "by", "cy", "cx", "bx", "ax", "azz", "aaa"};
         assertArrayEquals(expected2, mapMedium.allSwap(test2));
 
-        String[]   test3 = {"ax", "bx", "ay", "by", "ai", "aj", "bx", "by"};
+        String[] test3 = {"ax", "bx", "ay", "by", "ai", "aj", "bx", "by"};
         String[] expect3 = {"ay", "by", "ax", "bx", "aj", "ai", "by", "bx"};
         assertArrayEquals(expect3, mapMedium.allSwap(test3));
     }
